@@ -12,13 +12,14 @@ const Backdrop = (props) => {
 };
 
 const ModalOverlay = (props) => {
+  console.log("propsss", props);
   return (
     <div className="error-modal">
       <Card className="w-[36rem] p-0 z-20">
         <header className="bg-red-700 p-4 text-white rounded-t-xl">
-          <h2 className="text-center text-xl">{props.error?.title}</h2>
+          <h2 className="text-center text-xl">{props.title}</h2>
         </header>
-        <section className="p-4">{props.error?.message}</section>
+        <section className="p-4">{props.message}</section>
         <footer className="p-4 flex justify-end">
           <Button className="w-32" onClick={props.onConfirm}>
             Tamam
@@ -30,7 +31,7 @@ const ModalOverlay = (props) => {
 };
 const ErrorModal = (props) => {
   const { onConfirm, error } = props;
-  const {title,message}= error;
+  const { title, message } = error;
   return (
     <React.Fragment>
       {ReactDOM.createPortal(
