@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import AddWorker from "./components/Workers/AddWorker";
 import WorkerList from "./components/Workers/WorkerList";
 
@@ -7,11 +7,11 @@ function App() {
 
   console.log("workers appp", workers);
   return (
-    <div className="App">
+    <React.Fragment>
       <h1 className="text-white text-center mt-5 text-3xl">Maaş otomasyon</h1>
       <AddWorker setWorkers={setWorkers} workers={workers} />
       <WorkerList workers={workers} setWorkers={setWorkers} />
-    </div>
+    </React.Fragment>
   );
 }
 
