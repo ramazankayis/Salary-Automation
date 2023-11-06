@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import Button from "./Button";
 import Card from "./Card";
 import ReactDOM from "react-dom";
@@ -12,7 +12,7 @@ const Backdrop = (props) => {
 };
 
 const ModalOverlay = (props) => {
-  console.log("propsss", props);
+  // console.log("propsss", props);
   return (
     <div className="error-modal">
       <Card className="w-[36rem] p-0 z-20">
@@ -32,6 +32,26 @@ const ModalOverlay = (props) => {
 const ErrorModal = (props) => {
   const { onConfirm, error } = props;
   const { title, message } = error;
+
+  const cleanupRef = useRef();
+
+  useEffect(() => {
+    console.log("modal oluşturuldu.");
+    console.log("cleanupRef?.current.value", cleanupRef?.current);
+    return () => {
+      if (cleanupRef.current) {
+        console.log("Component kaldırıldı");
+        props.setWorkers([]);
+      }
+    };
+  }, [cleanupRef, props]);
+
+  useEffect(() => {
+    return () => {
+      cleanupRef.current = true;
+    };
+  }, []);
+
   return (
     <React.Fragment>
       {ReactDOM.createPortal(

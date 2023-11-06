@@ -13,6 +13,18 @@ const AddWorker = (props) => {
   const wageInputRef = useRef();
   const miniWage = 5000;
 
+  // useEffect(() => {
+  //   console.log("çalıştı");
+  // }, []);
+
+  //  useEffect(() => {
+  //    first
+
+  //    return () => {
+  //      second
+  //    }
+  //  }, [third])
+
   const addWorkerHandler = (e) => {
     e.preventDefault();
 
@@ -50,7 +62,7 @@ const AddWorker = (props) => {
   };
   return (
     <Wrapper>
-      {error && <ErrorModal onConfirm={errorHandler} error={error} />}
+      {error && <ErrorModal setWorkers={props.setWorkers} onConfirm={errorHandler} error={error} />}
       <Card className="mt-10">
         <form className="flex flex-col gap-y-2" onSubmit={addWorkerHandler}>
           <label className="font-medium">Çalışan İsmi</label>

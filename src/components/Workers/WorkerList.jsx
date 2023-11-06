@@ -10,7 +10,7 @@ const WorkerList = (props) => {
   const deleteWorker = (id) => {
     setWorkers(workers.filter((item) => item.id !== id));
   };
-  console.log("props.workers222", props.workers);
+  // console.log("props.workers222", props.workers);
   return (
     <div>
       <Card className="mt-10">
